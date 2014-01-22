@@ -20,37 +20,39 @@
                     </ul>
                 </div>
             </nav>
-            <h1 id="starbound_networking">Starbound Networking</h1>
+            <h1>Starbound Networking</h1>
 
 <p>The Starbound networking protocol is based on TCP. The current protocol version is 1234.</p>
 
-<h2 id="resources">Resources</h2>
+<h2>Resources</h2>
 
 <p>There are several related pages that you might want to browse:</p>
 
 <ul>
-<li><span class='text-danger'>Establishing a connection</span></li>
+<li><span class="text-danger">Establishing a connection</span></li>
 </ul>
 
-<h2 id="data_types">Data Types</h2>
+
+<h2>Data Types</h2>
+
 <!--
     This section describes terminology that will see use for all packets below. If a new data
     type is introduced, then document it here.
 -->
-<p>Note that I don’t actually know the data types, I’m filling this with bullshit for others to fix later.</p>
+
 
 <ul>
-<li><strong>string</strong>: UTF-8, prefixed with a uint8 indicating length.</li>
-
-<li><strong>[u]int##</strong>: An integer, in big-endian order. “u” indicates unsiged and ## is the length, in bits. Examples: uint8, int32, etc.</li>
-
-<li><strong>[u]vlq</strong>: <a href="https://en.wikipedia.org/wiki/Variable-length_quantity">Variable length quantity</a>. “u” indicates unsigned.</li>
+<li><strong>pstr</strong>: A length prefixed string, with a VLQ specifying the length.</li>
+<li><strong>[u]int##</strong>: An integer, in big-endian order. "u" indicates unsiged and ## is the length, in bits. Examples: uint8, int32, etc.</li>
+<li><strong>[s]VLQ</strong>: <a href="https://en.wikipedia.org/wiki/Variable-length_quantity">Variable length quantity</a>. "s" indicates signed.</li>
 </ul>
 
-<h2 id="base_packet">Base Packet</h2>
+
+<h2>Base Packet</h2>
 
 <p>Each packet is wrapped in this basic package:</p>
-<table class='table'>
+
+<table class="table">
     <thead>
         <tr>
             <th>Type</th>
@@ -65,9 +67,9 @@
             <td>The packet identifier. The payload format changes based on this value.</td>
         </tr>
         <tr>
-            <td>vrq</td>
+            <td>sVLQ</td>
             <td>Payload length</td>
-            <td>The length of the payload, in bytes.</td>
+            <td>The length of the payload, in bytes. If it is negative, this indicates the payload is compressed using zlib.</td>
         </tr>
         <tr>
             <td>Varies</td>
@@ -76,9 +78,202 @@
         </tr>
     </tbody>
 </table>
-<h2 id="packets">Packets</h2>
+
+
+<h2>Packets</h2>
+
+<h3>Protocol Version</h3>
 
 <p>TODO</p>
+
+<h3>Connect Response</h3>
+
+<p>TODO</p>
+
+<h3>Server Disconnect</h3>
+
+<p>TODO</p>
+
+<h3>Handshake Challenge</h3>
+
+<p>TODO</p>
+
+<h3>Chat Received</h3>
+
+<p>TODO</p>
+
+<h3>Universe Time Update</h3>
+
+<p>TODO</p>
+
+<h3>Client Connect</h3>
+
+<p>TODO</p>
+
+<h3>Client Disconnect</h3>
+
+<p>TODO</p>
+
+<h3>Handshake Response</h3>
+
+<p>TODO</p>
+
+<h3>Warp Command</h3>
+
+<p>TODO</p>
+
+<h3>Chat Sent</h3>
+
+<p>TODO</p>
+
+<h3>Client Context Update</h3>
+
+<p>TODO</p>
+
+<h3>World Start</h3>
+
+<p>TODO</p>
+
+<h3>World Stop</h3>
+
+<p>TODO</p>
+
+<h3>Tile Array Update</h3>
+
+<p>TODO</p>
+
+<h3>Tile Update</h3>
+
+<p>TODO</p>
+
+<h3>Tile Liquid Update</h3>
+
+<p>TODO</p>
+
+<h3>Tile Damage Update</h3>
+
+<p>TODO</p>
+
+<h3>Tile Modification Failure</h3>
+
+<p>TODO</p>
+
+<h3>Give Item</h3>
+
+<p>TODO</p>
+
+<h3>Unknown</h3>
+
+<p>TODO</p>
+
+<h3>Swap in Container Result</h3>
+
+<p>TODO</p>
+
+<h3>Environment Update</h3>
+
+<p>TODO</p>
+
+<h3>Entity Interact Result</h3>
+
+<p>TODO</p>
+
+<h3>Modify Tile List</h3>
+
+<p>TODO</p>
+
+<h3>Damage Tile</h3>
+
+<p>TODO</p>
+
+<h3>Damage Tile Group</h3>
+
+<p>TODO</p>
+
+<h3>Request Drop</h3>
+
+<p>TODO</p>
+
+<h3>Spawn Entity</h3>
+
+<p>TODO</p>
+
+<h3>Entity Interact</h3>
+
+<p>TODO</p>
+
+<h3>Connect Wire</h3>
+
+<p>TODO</p>
+
+<h3>Disconnect All Wires</h3>
+
+<p>TODO</p>
+
+<h3>Open Container</h3>
+
+<p>TODO</p>
+
+<h3>Close Container</h3>
+
+<p>TODO</p>
+
+<h3>Swap in Container</h3>
+
+<p>TODO</p>
+
+<h3>Item Apply in Container</h3>
+
+<p>TODO</p>
+
+<h3>Start Crafting in Container</h3>
+
+<p>TODO</p>
+
+<h3>Stop Crafting in Container</h3>
+
+<p>TODO</p>
+
+<h3>Burn Container</h3>
+
+<p>TODO</p>
+
+<h3>Clear Container</h3>
+
+<p>TODO</p>
+
+<h3>World Update</h3>
+
+<p>TODO</p>
+
+<h3>Entity Create</h3>
+
+<p>TODO</p>
+
+<h3>Entity Update</h3>
+
+<p>TODO</p>
+
+<h3>Entity Destroy</h3>
+
+<p>TODO</p>
+
+<h3>Damage Notification</h3>
+
+<p>TODO</p>
+
+<h3>Status Effect Request</h3>
+
+<p>TODO</p>
+
+<h3>Update World Properties</h3>
+
+<p>TODO</p>
+
+<h3>Heartbeat</h3>
+
+<p>TODO</p>
+
         </div>
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>

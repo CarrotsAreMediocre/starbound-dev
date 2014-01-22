@@ -20,11 +20,9 @@ There are several related pages that you might want to browse:
     type is introduced, then document it here.
 -->
 
-Note that I don't actually know the data types, I'm filling this with bullshit for others to fix later.
-
-* **string**: UTF-8, prefixed with a uint8 indicating length.
+* **pstr**: A length prefixed string, with a VLQ specifying the length.
 * **[u]int##**: An integer, in big-endian order. "u" indicates unsiged and ## is the length, in bits. Examples: uint8, int32, etc.
-* **[u]vlq**: [Variable length quantity](https://en.wikipedia.org/wiki/Variable-length_quantity). "u" indicates unsigned.
+* **[s]VLQ**: [Variable length quantity](https://en.wikipedia.org/wiki/Variable-length_quantity). "s" indicates signed.
 
 ## Base Packet
 
@@ -45,9 +43,9 @@ Each packet is wrapped in this basic package:
             <td>The packet identifier. The payload format changes based on this value.</td>
         </tr>
         <tr>
-            <td>vrq</td>
+            <td>sVLQ</td>
             <td>Payload length</td>
-            <td>The length of the payload, in bytes.</td>
+            <td>The length of the payload, in bytes. If it is negative, this indicates the payload is compressed using zlib.</td>
         </tr>
         <tr>
             <td>Varies</td>
@@ -59,4 +57,99 @@ Each packet is wrapped in this basic package:
 
 ## Packets
 
+### Protocol Version
+TODO
+### Connect Response
+TODO
+### Server Disconnect
+TODO
+### Handshake Challenge
+TODO
+### Chat Received
+TODO
+### Universe Time Update
+TODO
+### Client Connect
+TODO
+### Client Disconnect
+TODO
+### Handshake Response
+TODO
+### Warp Command
+TODO
+### Chat Sent
+TODO
+### Client Context Update
+TODO
+### World Start
+TODO
+### World Stop
+TODO
+### Tile Array Update
+TODO
+### Tile Update
+TODO
+### Tile Liquid Update
+TODO
+### Tile Damage Update
+TODO
+### Tile Modification Failure
+TODO
+### Give Item
+TODO
+### Unknown
+TODO
+### Swap in Container Result
+TODO
+### Environment Update
+TODO
+### Entity Interact Result
+TODO
+### Modify Tile List
+TODO
+### Damage Tile
+TODO
+### Damage Tile Group
+TODO
+### Request Drop
+TODO
+### Spawn Entity
+TODO
+### Entity Interact
+TODO
+### Connect Wire
+TODO
+### Disconnect All Wires
+TODO
+### Open Container
+TODO
+### Close Container
+TODO
+### Swap in Container
+TODO
+### Item Apply in Container
+TODO
+### Start Crafting in Container
+TODO
+### Stop Crafting in Container
+TODO
+### Burn Container
+TODO
+### Clear Container
+TODO
+### World Update
+TODO
+### Entity Create
+TODO
+### Entity Update
+TODO
+### Entity Destroy
+TODO
+### Damage Notification
+TODO
+### Status Effect Request
+TODO
+### Update World Properties
+TODO
+### Heartbeat
 TODO
